@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Welcome, {{ logged_user.name }}</h3>
+    <h5>Recent book reviews:</h5>
+    {% for recent_review in recent_reviews %}
+        <h3>{{recent_review.book_reviewd.title}}</h3>
+        <p>Rating: {{ recent_review.rating}}</p>
+        <p>{{recent_review.user_review.name}} says: {{recent_review.content}}</p>
+        <p>Posted on {{ recent_review.created_at }}</p>
+        <br><br>
+    {% endfor %}
+
+    <h2>Other Books with Review:</h2>
+    <ul>
+    {% for book in books %}
+        <li><a href="/books/{{book.id}}">{{book.title}}<a/></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
